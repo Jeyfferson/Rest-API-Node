@@ -2,6 +2,7 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
+const bodyParser = require('body-parser');
 
 //Criando a porta 3000 do serve
 const port = 3000
@@ -12,6 +13,9 @@ const rotaPedidos = require('./routes/pedidos');
 
 
 app.use(morgan('dev')); //Executa um callback para monitorar as rotas
+app.use(bodyParser.urlencoded({ extended: false })); //Aceitar apenas dados simples
+app.use(bodyParser.json()); //Aceitar apenas json de entrada no body
+
 app.use('/produtos', rotaProdutos)
 app.use('/pedidos', rotaPedidos)
 
