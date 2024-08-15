@@ -1,17 +1,17 @@
 const express = require('express')
 const router = express.Router()
 
-//Retornar todos os produtos
+//Retornar todos os Pedidos
 router.get('/', (req, res) => {
     res.status(200).send({
-        messagem: 'Retornar todos os produtos'
+        messagem: 'Retornar todos os pedidos'
     });
 })
 
-//Inserir Produto
+//Inserir um Pedido
 router.post('/', (req, res) => {
     res.status(201).send({
-        mensagem: 'Inserir um produto'
+        mensagem: 'Inserir um pedidos'
     })
 });
 
