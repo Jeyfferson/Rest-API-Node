@@ -16,6 +16,21 @@ app.use(morgan('dev')); //Executa um callback para monitorar as rotas
 app.use(bodyParser.urlencoded({ extended: false })); //Aceitar apenas dados simples
 app.use(bodyParser.json()); //Aceitar apenas json de entrada no body
 
+// Configurando controle de acesso ao servidor com o cors
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Header',
+        'Content-Type, Origin, X-Requested-With, Accept, Authorization'        
+    );
+
+    if(req.method === 'OPTIONS') {
+        res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
+        return res.status(200).send({});
+    }
+
+    next();
+})
+
 app.use('/produtos', rotaProdutos)
 app.use('/pedidos', rotaPedidos)
 
