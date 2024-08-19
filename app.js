@@ -7,6 +7,9 @@ const bodyParser = require('body-parser');
 //Criando a porta 3000 do serve
 const port = 3000
 
+//Conexão com db
+const mysql = require('./mysql.js');
+
 //Chamando a routa produtos do diretorio routes
 const rotaProdutos = require('./routes/produtos');
 const rotaPedidos = require('./routes/pedidos');
